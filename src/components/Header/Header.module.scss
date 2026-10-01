@@ -1,0 +1,179 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/fonts.scss' as *;
+
+.header {
+  &,
+  & * {
+    box-sizing: border-box;
+  }
+
+  display: flex;
+  position: sticky;
+
+  height: 48px;
+  top: 0;
+  z-index: 100;
+
+  background-color: var(--color-white);
+
+  border-bottom: 1px solid var(--color-elements);
+
+  @include on-tablet {
+    height: 48px;
+  }
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+  }
+
+  &__logo {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 96px;
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-desktop {
+      width: 128px;
+    }
+
+    &-link {
+      display: inline-flex;
+      img {
+        margin: 0;
+        width: 64px;
+        height: auto;
+
+        @include on-desktop {
+          margin: 18px 24px;
+          width: 80px;
+        }
+      }
+    }
+  }
+
+  &__pages {
+    display: flex;
+    height: 100%;
+    text-decoration: none;
+
+    opacity: 0;
+    pointer-events: none;
+
+    color: var(--color-secondary);
+
+    @include on-tablet {
+      pointer-events: all;
+      opacity: 1;
+      align-items: center;
+      gap: 64px;
+      padding-left: 16px;
+    }
+
+    @include on-desktop {
+      pointer-events: all;
+      opacity: 1;
+      align-items: center;
+      gap: 32px;
+      padding-left: 24px;
+    }
+
+    a {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      color: var(--color-secondary);
+      text-decoration: none;
+      transition: color 0.7s ease;
+
+      @include on-tablet {
+        @include uppercase;
+      }
+
+      @include on-desktop {
+        @include uppercase;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-primary);
+        transform: scaleX(0);
+        transition: transform 0.7s ease;
+      }
+
+      &:hover {
+        color: var(--color-primary);
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+
+    margin-left: auto;
+
+    &--mobile {
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      width: 48px;
+      height: 48px;
+
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        height: 48px;
+      }
+
+      @include on-desktop {
+        display: flex;
+        height: 64px;
+      }
+    }
+  }
+}
