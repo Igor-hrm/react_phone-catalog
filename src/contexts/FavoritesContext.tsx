@@ -5,9 +5,9 @@ export interface FavoritesProviderProps {
 }
 
 export interface FavoritesContextType {
-  favoriteIds: number[];
-  toggleFavorite: (id: number) => void;
-  isFavorite: (id: number) => boolean;
+  favoriteIds: (number | string)[];
+  toggleFavorite: (id: number | string) => void;
+  isFavorite: (id: number | string) => boolean;
 }
 
 export const FavoritesContext = createContext<FavoritesContextType | null>(
@@ -19,7 +19,7 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
   // cria o meu array de favoritos, e a função para alterar
   // a função no useState é para descobrir o valor inicial quando criar o estado
 
-  const [favoriteIds, setFavoriteIds] = useState<number[]>(() => {
+  const [favoriteIds, setFavoriteIds] = useState<(number | string)[]>(() => {
     const savedFavorites = localStorage.getItem('favoriteIds');
     //json sempre devolve texto, o parse faz: string -> objeto/array
 
@@ -31,7 +31,7 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
     localStorage.setItem('favoriteIds', JSON.stringify(favoriteIds));
   }, [favoriteIds]);
 
-  const toggleFavorite = (id: number) => {
+  const toggleFavorite = (id: number | string) => {
     setFavoriteIds(prev =>
       prev.includes(id)
         ? prev.filter(favoriteId => favoriteId !== id)
@@ -39,7 +39,7 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
     );
   };
 
-  const isFavorite = (id: number) => {
+  const isFavorite = (id: number | string) => {
     return favoriteIds.includes(id);
   };
 

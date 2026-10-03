@@ -5,10 +5,10 @@ export interface CartProviderProps {
 }
 
 export interface CartContextType {
-  cartIds: number[];
-  addToCart: (id: number) => void;
-  removeFromCart: (id: number) => void;
-  isInCart: (id: number) => boolean;
+  cartIds: (number | string)[];
+  addToCart: (id: number | string) => void;
+  removeFromCart: (id: number | string) => void;
+  isInCart: (id: number | string) => boolean;
 }
 
 // O Provider recebe tudo que estiver dentro dele através de:
@@ -17,7 +17,7 @@ export const CartContext = createContext<CartContextType | null>(null);
 // a função no useState é para descobrir o valor inicial quando criar o estado
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const [cartIds, setCartIds] = useState<number[]>(() => {
+  const [cartIds, setCartIds] = useState<(number | string)[]>(() => {
     const savedCart = localStorage.getItem('cartIds');
     //json sempre devolve texto, o parse faz: string -> objeto/array
 
@@ -29,7 +29,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     localStorage.setItem('cartIds', JSON.stringify(cartIds));
   }, [cartIds]);
 
-  const addToCart = (id: number) => {
+  const addToCart = (id: number | string) => {
     setCartIds(prev => {
       if (prev.includes(id)) {
         return prev;
@@ -39,11 +39,11 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     });
   };
 
-  const removeFromCart = (id: number) => {
+  const removeFromCart = (id: number | string) => {
     setCartIds(prev => prev.filter(cartId => cartId !== id));
   };
 
-  const isInCart = (id: number) => {
+  const isInCart = (id: number | string) => {
     return cartIds.includes(id);
   };
 

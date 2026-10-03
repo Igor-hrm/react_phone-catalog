@@ -2,14 +2,17 @@ import './App.scss';
 
 import { Header, Footer } from './components';
 
-import { HomePage, PhonePage } from './modules';
+import {
+  HomePage,
+  PhonePage,
+  NotFoundPage,
+  CartPage,
+  FavoritesPage,
+  TabletsPage,
+  AccessoriesPage,
+} from './modules';
 
 import { Routes, Route } from 'react-router-dom';
-import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
-import { CartPage } from './modules/CartPage';
-import { FavoritesPage } from './modules/FavoritesPage';
-import { TabletsPage } from './modules/TabletsPage';
-import { AccessoriesPage } from './modules/AccessoriesPage';
 
 export const App = () => {
   return (
