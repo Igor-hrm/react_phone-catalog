@@ -5831,21 +5831,5 @@
     "camera": "48 Mp + 12 Mp + 12MP + 12Mp",
     "zoom": "Digital 5x, Optical 2x",
     "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
-  },
-  {
-    "id": "apple-iphone-17-pro-256gb-silver",
-    "category": "phones",
-    "namespaceId": "apple-iphone-17-pro",
-    "name": "Apple iPhone 17 Pro 256GB Silver",
-    "capacityAvailable": ["256GB", "512GB", "1TB"],
-    "capacity": "256GB",
-    "priceRegular": 12499,
-    "priceDiscount": 11499,
-    "colorsAvailable": ["silver", "cosmic-orange", "deep-blue"],
-    "color": "silver",
-    "images": [
-      "img/phones/apple-iphone-17-pro/silver/00.webp",
-      "img/phones/apple-iphone-17-pro/silver/01.webp"
-    ]
   }
 ]
